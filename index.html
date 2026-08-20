@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1036,7 +1035,7 @@
         HAMZA<span>.</span>
       </a>
 
-      <button class="menu-btn" onclick="toggleMenu()">
+      <button class="menu-btn" aria-label="Toggle navigation menu" aria-expanded="false" onclick="toggleMenu()">
         ☰
       </button>
 
@@ -1800,6 +1799,7 @@
 
           <a href="https://www.linkedin.com/in/hamza-sajjad-799217340/"
              target="_blank"
+             rel="noopener noreferrer"
              class="btn btn-outline">
 
             💼 LinkedIn Profile
@@ -1811,6 +1811,7 @@
 
           <a href="https://wa.me/923485368049"
              target="_blank"
+             rel="noopener noreferrer"
              class="btn btn-outline">
 
             💬 WhatsApp Me
@@ -1851,20 +1852,24 @@
 
     function toggleMenu() {
 
-      document
-        .getElementById("navLinks")
-        .classList
-        .toggle("active");
+      const navLinks = document.getElementById("navLinks");
+      const menuBtn = document.querySelector(".menu-btn");
+      const isActive = navLinks.classList.toggle("active");
+      if (menuBtn) {
+        menuBtn.setAttribute("aria-expanded", isActive ? "true" : "false");
+      }
 
     }
 
 
     function closeMenu() {
 
-      document
-        .getElementById("navLinks")
-        .classList
-        .remove("active");
+      const navLinks = document.getElementById("navLinks");
+      const menuBtn = document.querySelector(".menu-btn");
+      navLinks.classList.remove("active");
+      if (menuBtn) {
+        menuBtn.setAttribute("aria-expanded", "false");
+      }
 
     }
 
@@ -1872,4 +1877,3 @@
 
 </body>
 </html>
-```
